@@ -486,7 +486,7 @@ RunKNNPredict <- function(srt_query, srt_ref = NULL, bulk_ref = NULL,
   if (is.numeric(filter_lowfreq) && filter_lowfreq > 0) {
     drop <- table(srt_query[[paste0(prefix, "_classification"), drop = TRUE]])
     drop <- names(drop)[drop <= filter_lowfreq]
-    srt_query@meta.data[[paste0(prefix, "_classification"), drop = TRUE]][srt_query[[paste0(prefix, "_classification"), drop = TRUE]] %in% drop] <- "unreliable"
+    srt_query[[paste0(prefix, "_classification"), drop = TRUE]][srt_query[[paste0(prefix, "_classification"), drop = TRUE]] %in% drop] <- "unreliable"
   }
 
   return(srt_query)
